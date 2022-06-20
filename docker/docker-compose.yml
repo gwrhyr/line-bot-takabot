@@ -1,0 +1,31 @@
+# last upd by gwrhyr
+# last upd on 2022/06/18
+version: "3.9"
+
+services:
+  postgres:
+    container_name: postgres
+    restart: always
+    image: postgres
+    env_file:
+      - postgres-variables.env
+    volumes:
+      - ../postgres-data/postgres:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+  flaskapp:
+    container_name: flaskapp
+    restart: always
+    build:
+      context: ../
+      dockerfile: ./docker/Dockerfile
+    env_file:
+      - flaskapp-variables.env
+    volumes:
+      - ../app:/app
+    ports:
+      - 5000:5000
+    entrypoint: /app/entrypoint.sh
+    depends_on:
+      - postgres
+

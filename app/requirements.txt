@@ -1,0 +1,7 @@
+line-bot-sdk
+flask
+psycopg2
+flask-sqlalchemy
+sqlalchemy-utils
+flask_script
+pytz
