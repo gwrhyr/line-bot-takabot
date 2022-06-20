@@ -1,4 +1,4 @@
 docker/*.env
 *.pyc
-postgres-data/
+postgres-data/postgres/*
 .DS_Store/
